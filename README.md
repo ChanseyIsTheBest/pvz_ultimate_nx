@@ -17,6 +17,7 @@ sdmc:/switch/pvzultimate
 ├── libopenmpt.so             <- from your APK: lib/arm64-v8a/
 └── assets/                   <- from your APK: the whole assets/ folder
     └── ... (main.rsb, etc.)
+```
 
 Optionally, drop a `cursor.png` (up to 64x64, transparency supported) in the same folder to replace the on-screen cursor with your own.
 
