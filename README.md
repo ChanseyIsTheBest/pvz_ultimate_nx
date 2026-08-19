@@ -48,6 +48,6 @@ pacman -S switch-mesa switch-libdrm_nouveau switch-libpng switch-zlib
 
 ## Credits
  
-The loader/shim infrastructure (`so_util`, `libc_shim`, `util`) derives from the open-source Switch port of Fruit Ninja by ChanseyIsTheBest, which in turn builds on TheOfficialFloW's Vita/Switch loader lineage — all MIT-licensed. Three things came across from it and all three mattered: bounded futex waits rather than blocking
+The loader/shim infrastructure (`so_util`, `libc_shim`, `util`) derives from the open-source Switch port of Fruit Ninja by ChanseyIsTheBest, which in turn builds on TheOfficialFloW's Vita/Switch loader lineage — all MIT-licensed. Three things came across from it and all three mattered: bounded futex waits rather than blocking indefinitely, letting libnx allocate thread stacks, and spreading threads across cores. Its GC bridge is Boehm/IL2CPP and does not apply here — NativeAOT's cooperative GC needed different handling.
+
 Icon from @Kosmic on Discord
-indefinitely, letting libnx allocate thread stacks, and spreading threads across cores. Its GC bridge is Boehm/IL2CPP and does not apply here — NativeAOT's cooperative GC needed different handling.
