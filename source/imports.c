@@ -522,6 +522,10 @@ DynLibFunction g_imports[] = {
   SYM("exp", exp),
   SYM("expf", expf),
   SYM("fmod", fmod),
+  /* New import in the latest game build. newlib has it, so this is a straight
+     pass-through -- but it was absent from the table, and an absent import is a
+     fatal trap the first time the game calls it. */
+  SYM("fmodf", fmodf),
   SYM("free", free),
   SYM("gettimeofday", gettimeofday),
   SYM("inflate", inflate),

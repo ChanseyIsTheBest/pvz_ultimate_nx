@@ -20,7 +20,7 @@ INCLUDES    := source
 
 APP_TITLE   := PvZ Ultimate
 APP_AUTHOR  := ChanseyIsTheBest
-APP_VERSION := 1.0.0
+APP_VERSION := 1.0.2
 
 # icon.jpg in the project root is picked up by switch_rules automatically and
 # embedded in the NRO. It must be exactly 256x256 baseline JPEG -- the source
