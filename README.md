@@ -5,7 +5,7 @@ English and Simplified Chinese languages are supported.
 
 ## Install & run
  
-You need files from `pvz_ultimate_2_1_2_Android` (game version **2.1.2**).
+You need files from `pvz_ultimate_2_1_2_Android` (game version **2.2.0 BETA**).
  
 Copy the `.nro` to your SD card, then place your game files next to it, in the same folder:
  
