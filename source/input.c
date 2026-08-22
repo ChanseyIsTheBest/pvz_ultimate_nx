@@ -74,6 +74,23 @@ static u64      g_down_ns;
 #endif
 
 /* Android keycodes we care about. */
+/* B -> Android BACK. OFF.
+ *
+ * It was doing more than "go back". lawn_key_full escalates an UNCONSUMED
+ * BACK key-down to n_onBackPressed on the Activity, and in this game that is
+ * the quit path -- so any press the current screen did not happen to want
+ * became an exit request. That is a much worse failure than the button simply
+ * doing nothing, and it is why B was causing trouble.
+ *
+ * Set to 1 to restore the mapping. If it misbehaves again, the escalation in
+ * lawn_key_full is the thing to look at first, not this binding: a back button
+ * that quits when a menu ignores it is wrong regardless of what presses it.
+ *
+ * Nothing else is affected -- the exit combo is L+R+Plus in main.c, and the
+ * software keyboard's own B (backspace) belongs to the keyboard applet, which
+ * runs modally with this loop stopped. */
+#define BACK_BUTTON 0
+
 #define AKEYCODE_BACK   4
 #define AKEY_ACTION_DOWN 0
 #define AKEY_ACTION_UP   1
@@ -83,7 +100,9 @@ typedef struct { int id; float x, y; } Ptr;
 static Ptr g_prev[MAX_PTR];  static int g_nprev;
 static Ptr g_cur[MAX_PTR];   static int g_ncur;
 
+#if BACK_BUTTON
 static int  g_back_held;
+#endif
 static int  g_screen_w = 1280, g_screen_h = 720;
 
 /* ------------------------------------------------------------------------ */
@@ -338,9 +357,10 @@ void input_update(void) {
 /* ------------------------------------------------------------------------ */
 
 void input_handle_buttons(unsigned long long down, unsigned long long up) {
-  /* B maps to Android BACK. The game's Activity has n_onBackPressed, but
-   * routing through the key path first lets the SurfaceView consume it -- menus
-   * usually want it before the Activity does. */
+#if BACK_BUTTON
+  /* Routed through the key path first so the SurfaceView can consume it --
+   * menus usually want it before the Activity does. See BACK_BUTTON above for
+   * why this is off. */
   if (down & HidNpadButton_B) {
     if (!g_back_held) {
       g_back_held = 1;
@@ -353,6 +373,9 @@ void input_handle_buttons(unsigned long long down, unsigned long long up) {
       lawn_key(AKEY_ACTION_UP, AKEYCODE_BACK);
     }
   }
+#else
+  (void)down; (void)up;
+#endif
 
   /* Y used to open the keyboard by hand.
    *

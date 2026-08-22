@@ -371,7 +371,7 @@ int main(int argc, char *argv[]) {
   input_init(g_screen_w, g_screen_h, HOST_DATA_DIR);
   debug_log("[input] controls: touchscreen (handheld) | '+' cursor on/off | "
             "'-' gyro | left stick moves | A/ZL/ZR tap | L or R recenter | "
-            "D-pad up/down sensitivity | B = Android BACK | "
+            "D-pad up/down sensitivity | "
             "L+R+Plus exits the host\n");
 
   /* Before the loop, and before the game ever asks for audio: creating this
