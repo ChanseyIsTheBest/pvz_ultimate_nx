@@ -31,7 +31,6 @@ Optionally, drop a `cursor.png` (up to 64x64, transparency supported) in the sam
 | Left stick | Move the cursor |
 | `L` / `R` | Recenter the cursor to the middle of the screen (helps gyro aiming) |
 | `A` / `ZR` / `ZL` | Tap / confirm (ZL and ZR let you play one-handed) |
-| `B` | Back button |
 | D-pad up / down | Adjust sensitivity of whatever is driving the cursor |
 | `L`+`R`+`+` held | Exit |
  
